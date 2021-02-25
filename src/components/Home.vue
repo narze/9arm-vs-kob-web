@@ -5,6 +5,16 @@
       <div id="diff">{{ loading ? "Loading" : `${payload.diff} คน` }}</div>
     </div>
     <div>
+      {{
+        loading
+          ? ""
+          : `อัพเดตล่าสุด : ${new Intl.DateTimeFormat("en-US", {
+              timeStyle: "short",
+              dateStyle: "short",
+            }).format(new Date(payload.updatedAt))}`
+      }}
+    </div>
+    <div>
       <a
         href="https://raw.githubusercontent.com/narze/9arm-vs-kob/main/data.json"
         >API</a
@@ -23,6 +33,7 @@ interface Payload {
   group9arm: number;
   groupKob: number;
   diff: number;
+  updatedAt: string;
 }
 
 export default defineComponent({
