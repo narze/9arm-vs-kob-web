@@ -15,10 +15,7 @@
       }}
     </div>
     <div>
-      <a
-        href="https://raw.githubusercontent.com/narze/9arm-vs-kob/main/data.json"
-        >API</a
-      >
+      <a href="https://9arm-vs-kob-api.vercel.app/data.json">API</a>
       | <a href="https://github.com/narze/9arm-vs-kob-web">GitHub</a> |
       <a href="https://github.com/narze/9arm-vs-kob">Scraper</a>
     </div>
@@ -47,7 +44,7 @@ export default defineComponent({
   },
   mounted() {
     axios
-      .get("https://raw.githubusercontent.com/narze/9arm-vs-kob/main/data.json")
+      .get("https://9arm-vs-kob-api.vercel.app/data.json")
       .then((response) => {
         this.payload = response.data as Payload;
         this.loading = false;
