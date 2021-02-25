@@ -3,9 +3,9 @@
     <div id="cover">
       <img src="../assets/cover.jpg" />
       <div id="diff">
-        <span v-if="payload.diff < 0"><span id="down">&#x2B07;</span></span>
-        <span v-else-if="payload.diff > 0"><span id="up">&#x2B06;</span></span>
-        <span v-else-if="payload.diff === 0"><span id="equal">=</span></span>
+        <span v-if="payload.diff < 0" id="down">&#x2B07;</span>
+        <span v-else-if="payload.diff > 0" id="up">&#x2B06;</span>
+        <span v-else id="equal">=</span>
         {{ loading ? "Loading" : `${payload.diff} คน` }}
       </div>
     </div>
