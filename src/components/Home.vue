@@ -4,6 +4,14 @@
       <img src="../assets/cover.jpg" />
       <div id="diff">{{ loading ? "Loading" : `${payload.diff} คน` }}</div>
     </div>
+    <div>
+      <a
+        href="https://raw.githubusercontent.com/narze/9arm-vs-kob/main/data.json"
+        >API</a
+      >
+      | <a href="https://github.com/narze/9arm-vs-kob-web">GitHub</a> |
+      <a href="https://github.com/narze/9arm-vs-kob">Scraper</a>
+    </div>
   </div>
 </template>
 
