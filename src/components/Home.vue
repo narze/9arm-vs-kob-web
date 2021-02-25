@@ -2,7 +2,12 @@
   <div class="home">
     <div id="cover">
       <img src="../assets/cover.jpg" />
-      <div id="diff">{{ loading ? "Loading" : `${payload.diff} คน` }}</div>
+      <div id="diff">
+        <span v-if="payload.diff < 0"><span id="down">&#x2B07;</span></span>
+        <span v-else-if="payload.diff > 0"><span id="up">&#x2B06;</span></span>
+        <span v-else-if="payload.diff === 0"><span id="equal">=</span></span>
+        {{ loading ? "Loading" : `${payload.diff} คน` }}
+      </div>
     </div>
     <div>
       {{
@@ -83,6 +88,18 @@ a {
   bottom: 30%;
   right: 10%;
   font-size: 6rem;
+}
+
+#down {
+  color: #ED1C24;
+}
+
+#up {
+  color: #42b983;
+}
+
+#equal {
+  color: #f8f826;
 }
 
 @media screen and (max-width: 1280px) {
