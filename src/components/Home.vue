@@ -19,9 +19,7 @@ interface Payload {
 
 export default defineComponent({
   name: "Home",
-  props: {
-    msg: String,
-  },
+  props: {},
   data() {
     return {
       loading: true,
