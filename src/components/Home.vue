@@ -5,14 +5,7 @@
       <div id="diff">{{ loading ? "Loading" : `${payload.diff} คน` }}</div>
     </div>
     <div>
-      {{
-        loading
-          ? ""
-          : `อัพเดตล่าสุด : ${new Intl.DateTimeFormat("en-US", {
-              timeStyle: "short",
-              dateStyle: "short",
-            }).format(new Date(payload.updatedAt))}`
-      }}
+      {{ loading ? "" : `อัพเดตล่าสุด : ${formattedUpdatedAt}` }}
     </div>
     <div>
       <a href="https://9arm-vs-kob-api.vercel.app/data.json">API</a>
@@ -40,6 +33,7 @@ export default defineComponent({
     return {
       loading: true,
       payload: {} as Payload,
+      formattedUpdatedAt: "",
     };
   },
   mounted() {
@@ -47,6 +41,21 @@ export default defineComponent({
       .get("https://9arm-vs-kob-api.vercel.app/data.json")
       .then((response) => {
         this.payload = response.data as Payload;
+
+        const time = new Date(this.payload.updatedAt);
+        this.formattedUpdatedAt =
+          ("0" + time.getDate()).slice(-2) +
+          "/" +
+          ("0" + (time.getMonth() + 1)).slice(-2) +
+          "/" +
+          time.getFullYear() +
+          " " +
+          ("0" + time.getHours()).slice(-2) +
+          ":" +
+          ("0" + time.getMinutes()).slice(-2) +
+          ":" +
+          ("0" + time.getSeconds()).slice(-2);
+
         this.loading = false;
       });
   },
