@@ -2,7 +2,18 @@
   <div class="home">
     <div id="cover">
       <img src="../assets/cover.jpg" />
-      <div id="diff">{{ loading ? "Loading" : `${payload.diff} คน` }}</div>
+      <div id="diff">
+        <span v-if="payload.diffChanged">
+          <span v-if="payload.diffChanged < 0" id="down">&#x2B07;</span>
+          <span v-else-if="payload.diffChanged > 0" id="up">&#x2B06;</span>
+          <span v-else-if="payload.diffChanged == 0" id="equal">=</span>
+          <span id="diffChanged"
+            >{{ payload.diffChanged > 0 ? "+" : ""
+            }}{{ payload.diffChanged }}</span
+          ></span
+        >
+        {{ loading ? "Loading" : `${payload.diff} คน` }}
+      </div>
     </div>
     <div>
       {{ loading ? "" : `อัพเดตล่าสุด : ${formattedUpdatedAt}` }}
@@ -24,6 +35,7 @@ interface Payload {
   groupKob: number;
   diff: number;
   updatedAt: string;
+  diffChanged: number;
 }
 
 export default defineComponent({
@@ -87,11 +99,26 @@ a {
   height: auto;
 }
 
+#down {
+  color: #ed1c24;
+}
+#up {
+  color: #42b983;
+}
+#equal {
+  color: #f8f826;
+}
+
 #diff {
   position: absolute;
   bottom: 30%;
   right: 10%;
   font-size: 6rem;
+}
+
+#diffChanged {
+  font-size: 1rem;
+  margin-left: -1rem;
 }
 
 @media screen and (max-width: 1280px) {
@@ -115,6 +142,10 @@ a {
     bottom: 30%;
     right: 8%;
     font-size: 3rem;
+  }
+  #diffChanged {
+    font-size: 0.5rem;
+    margin-left: -0.5rem;
   }
 }
 
