@@ -20,7 +20,9 @@
     </div>
     <div>
       <a href="https://9arm-vs-kob-api.vercel.app/data.json">API</a>
-      | <a href="https://github.com/narze/9arm-vs-kob-web">GitHub</a> |
+      |
+      <a href="https://9arm-vs-kob-api.vercel.app/history.json">History API</a>
+      | | <a href="https://github.com/narze/9arm-vs-kob-web">GitHub</a> |
       <a href="https://github.com/narze/9arm-vs-kob">Scraper</a>
     </div>
   </div>
